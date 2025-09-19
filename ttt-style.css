@@ -1,0 +1,46 @@
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+}
+
+.board{
+
+    aspect-ratio: 1/1;
+
+    width: 90%;
+    height: auto;
+    background-color:rgb(46, 29, 29);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    border-radius: 10px;
+
+}
+
+.space-white{
+
+    font-size: 3em;
+
+    aspect-ratio: 1/1;
+    width: 75%;
+    height: 75%;
+    background-color:cornsilk;
+
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: rgb(230, 172, 0);
+
+    transition: .5s;
+}
+
+.space-white:hover{
+    background-color:white;
+}
