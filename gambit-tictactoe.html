@@ -7,28 +7,39 @@
 </head>
 <body>
     
-    <h1>
+    <h1 class="centeredText">
         Gambit TicTacToe
     </h1>
-    <p>
+    <p class="centeredText">
         A tictactoe web-app.
     </p>
 
+    <div class="gameContainer">
+        <div class="board">
+            <button onclick="playerMove(0,0)" class="space-white" id="0,0"></button>
+            <button onclick="playerMove(0,1)" class="space-white" id="0,1"></button>
+            <button onclick="playerMove(0,2)" class="space-white" id="0,2"></button>
 
-    <div class="board">
-        <button onclick="playerMove(0,0)" class="space-white" id="0,0"></button>
-        <button onclick="playerMove(0,1)" class="space-white" id="0,1"></button>
-        <button onclick="playerMove(0,2)" class="space-white" id="0,2"></button>
+            <button onclick="playerMove(1,0)" class="space-white" id="1,0"></button>
+            <button onclick="playerMove(1,1)" class="space-white" id="1,1"></button>
+            <button onclick="playerMove(1,2)" class="space-white" id="1,2"></button1>
 
-        <button onclick="playerMove(1,0)" class="space-white" id="1,0"></button>
-        <button onclick="playerMove(1,1)" class="space-white" id="1,1"></button>
-        <button onclick="playerMove(1,2)" class="space-white" id="1,2"></button1>
+            <button onclick="playerMove(2,0)" class="space-white" id="2,0"></button>
+            <button onclick="playerMove(2,1)" class="space-white" id="2,1"></button>
+            <button onclick="playerMove(2,2)" class="space-white" id="2,2"></button>
+        </div>
 
-        <button onclick="playerMove(2,0)" class="space-white" id="2,0"></button>
-        <button onclick="playerMove(2,1)" class="space-white" id="2,1"></button>
-        <button onclick="playerMove(2,2)" class="space-white" id="2,2"></button>
+        <div class="settings">
+            <p class="settingsTitle">Settings</p>
+            <div class="checkbox">
+                <input type="checkbox" id="HardMode" class="hardMode">
+                <span for="HardMode" class="hardModeText">Hard Mode</span><br>
+            </div>
+            <button onclick="resetGame()" class="resetButton">Reset</button><br>
+        </div>
     </div>
 
+    <h1 id="result" class="centeredText"></h1>
 
 
 

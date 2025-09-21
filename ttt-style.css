@@ -1,16 +1,58 @@
 body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
+    background-color: burlywood;
 }
+
+
+
+.gameContainer{
+    margin: auto;
+    display: flex;
+    width: min(90%, 1000px);
+
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: rgb(101, 78, 49);;
+
+    border-radius: 20px;
+}
+
+.settings{
+
+    aspect-ratio: 1/1;
+
+    margin: 20px;
+    background-color:rgb(46, 29, 29);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+
+    max-width: 500px;
+    height: auto;
+    max-height: 500px;
+
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+
+}
+
+
 
 .board{
 
     aspect-ratio: 1/1;
 
-    width: 90%;
+    width: 75%;
+    max-width: 500px;
     height: auto;
+    max-height: 500px;
     background-color:rgb(46, 29, 29);
-    margin: auto;
+
+    margin: 20px;
 
     display: grid;
     grid-template-columns: auto auto auto;
@@ -21,7 +63,7 @@ body{
 
 .space-white{
 
-    font-size: 3em;
+    font-size: min(9vw, 65pt);
 
     aspect-ratio: 1/1;
     width: 75%;
@@ -37,10 +79,76 @@ body{
     border-radius: 5px;
     border: none;
     color: rgb(230, 172, 0);
-
-    transition: .5s;
 }
 
 .space-white:hover{
     background-color:white;
 }
+
+
+.resetButton{
+    margin: auto;
+    display: flex;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: rgb(46, 29, 29) solid 5px;
+    border-radius: 10px;
+    background-color: cornsilk;
+    cursor: pointer;
+
+    font-size: 100%;
+    color: rgb(230, 172, 0);
+
+}
+
+.resetButton:hover{
+    background-color:white;
+}
+
+
+.hardMode{
+    transform: scale(2);
+    cursor: pointer;
+    margin: 10px;
+    accent-color: rgb(230, 172, 0);
+    color: cornsilk;
+}
+
+.hardModeText{
+    text-align: center;
+    color: rgb(230, 172, 0);
+}
+
+
+.checkbox{
+    margin: 10px;
+    display: flex;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: rgb(46, 29, 29) solid 5px;
+    border-radius: 10px;
+    background-color: cornsilk;
+
+}
+
+
+.settingsTitle{
+    color: rgb(230, 172, 0);
+}
+
+
+
+.result{
+    margin: 20px;
+}
+
+
+.centeredText{
+    text-align: center;
+}
+
+
