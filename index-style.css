@@ -1,0 +1,38 @@
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+    background-color: burlywood;
+}
+
+.centeredText{
+    text-align: center;
+}
+
+
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.linkButtons{
+    width: 20vw;
+    height: 10vw;
+
+    border: black solid 5px;
+    border-radius: 10px;
+
+    font-style: italic;
+    font-size: 3vw;
+    color: gold;
+
+    background-color: rgb(21, 21, 21);
+
+}
+
+.linkButtons:hover{
+    background-color: rgb(39, 39, 39);
+}
+
