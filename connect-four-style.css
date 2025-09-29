@@ -7,11 +7,14 @@ body{
     width: auto;
     height: 450px;
 
+    padding: 5px;
+
     display: grid;
     grid-template-rows: repeat(6, auto);
 
     cursor: pointer;
     text-align: center;
+
 }
 
 
@@ -22,12 +25,81 @@ body{
 
     box-shadow: 0 0 0 2px;
     font-size: 50px;
+
+    border-radius: 100%;
+
+    background-color: white;
+
 }
 
 
 #cellContainer{
     display: grid;
     grid-template-columns: repeat(7, auto);
-    width: 525px;
+    width: 625px;
+    height: 485px;
     margin: auto;
+
+    background-color: black;
+
+    border-radius: 40px;
+
+    padding: 20px;
+
+}
+
+
+
+
+.center-text{
+    text-align: center;
+    padding: 20px;
+}
+
+
+#restartBtn{
+    margin: auto;
+    display: flex;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: rgb(46, 29, 29) solid 5px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 189);
+    cursor: pointer;
+
+    font-size: 100%;
+
+    width: 100px;
+
+}
+
+
+.status-bar{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+
+    align-items: center;
+
+    width: 500px;
+    margin: auto;
+
+}
+
+.turn-text{
+    width: 250px;
+}
+
+
+.player-red{
+    background-color: rgb(255, 40, 40);
+}
+
+.player-blue{
+    background-color: rgb(40, 40, 255);
+}
+
+.player-win{
+    box-shadow: inset 0px 0px 0px 10px gold;
 }

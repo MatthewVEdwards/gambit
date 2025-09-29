@@ -7,7 +7,7 @@ const statusText = document.querySelector("#statusText");
 
 const restartBtn = document.querySelector("#restartBtn");
 
-
+const indCell = document.getElementById("indCell");
 
 
 let board = [
@@ -37,13 +37,13 @@ let running = false;
 
 initializeGame();
 
-console.log("win conditions bugged, especially diagonals. pls fix")
 
 
 function initializeGame() {
     cols.forEach(cols => cols.addEventListener("click", colClicked));
     restartBtn.addEventListener("click", restartGame);
-    statusText.textContent = `Enjoy the game! :D`;
+    statusText.textContent = `Reds Turn`;
+    changeIndicator(1);
     running = true;
 }
 
@@ -59,17 +59,36 @@ function colClicked() {
 
     let winner = checkWinner();
 
-    if (winner == 1 || winner == -1) {
-        statusText.textContent = `Winner detected! :D`
+    if (winner == 1) {
+        statusText.textContent = `Red Wins! :D`
+        changeIndicator(1);
         running = false;
+        return;
+    }
+    else if (winner == -1) {
+        statusText.textContent = `Blue Wins! :D`
+        changeIndicator(-1);
+        running = false;
+        return;
     }
     else if (winner == 10) {
-        statusText.textContent = `Draw detected... :/`
+        statusText.textContent = `Draw...`
+        indCell.classList.remove("player-red", "player-blue");
         running = false;
+        return;
     }
 
 
     currentPlayer *= -1;
+
+    if (currentPlayer == 1) {
+        statusText.textContent = `Reds Turn`
+        changeIndicator(1);
+    }
+    else {
+        statusText.textContent = `Blues Turn`
+        changeIndicator(-1);
+    }
 
 }
 
@@ -85,7 +104,9 @@ function updateCell(index) {
 
             const cellChanged = cells[index][i];
 
-            currentPlayer > 0 ? cellChanged.textContent = "X" : cellChanged.textContent = "O";
+            //currentPlayer > 0 ? cellChanged.textContent = "X" : cellChanged.textContent = "O";
+            currentPlayer > 0 ? cellChanged.classList.add("player-red") : cellChanged.classList.add("player-blue");
+
 
             return;
         }
@@ -102,11 +123,11 @@ function restartGame() {
         for (j = 0; j < 6; j++) {
             board[i][j] = 0;
             const cellChanged = cells[i][j];
-            cellChanged.textContent = "";
+            cellChanged.classList.remove("player-red", "player-blue", "player-win");
         }
     }
 
-    statusText.textContent = "Enjoy the game! :D"
+    statusText.textContent = "Reds Turn"
 
     running = true;
 }
@@ -117,6 +138,9 @@ function checkWinner() {
     for (i = 0; i < cols.length; i++) {
         for (j = 0; j < 3; j++) {
             if (Math.abs(board[i][j] + board[i][j + 1] + board[i][j + 2] + board[i][j + 3]) == 4) {
+                
+                hightlightWinner(i,j,"vert")
+                
                 return board[i][j];
             }
         }
@@ -126,6 +150,9 @@ function checkWinner() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 4; j++) {
             if (Math.abs(board[j][i] + board[j + 1][i] + board[j + 2][i] + board[j + 3][i]) == 4) {
+                
+                hightlightWinner(j,i,"hor")
+
                 return board[j][i];
             }
         }
@@ -133,22 +160,23 @@ function checkWinner() {
 
     // check diagonals
 
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 4; j++) {
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 3; j++) {
+
             if (Math.abs(board[i][j] + board[i + 1][j + 1] + board[i + 2][j + 2] + board[i + 3][j + 3]) == 4) {
+                hightlightWinner(i,j,"diag1")
                 return board[i][j];
             }
-        }
-    }
 
-
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 4; j++) {
             if (Math.abs(board[i + 3][j] + board[i + 2][j + 1] + board[i + 1][j + 2] + board[i][j + 3]) == 4) {
-                return board[i][j];
+                hightlightWinner(i,j,"diag2")
+                return board[i + 3][j];
             }
+
         }
     }
+
+    console.log(board);
 
 
     // check for draw or return 0 for no winners yet
@@ -167,4 +195,76 @@ function checkWinner() {
 
 }
 
+
+
+function changeIndicator(value) {
+    indCell.classList.remove("player-red", "player-blue");
+    
+    if (value == 1) {
+        indCell.classList.add("player-red");
+    }
+    else {
+        indCell.classList.add("player-blue");
+    }
+}
+
+
+function hightlightWinner(col, row, arrangemnt) {
+
+    let cellChanged1;
+    let cellChanged2;
+    let cellChanged3;
+    let cellChanged4;
+
+    switch (arrangemnt) {
+        case "vert":
+            cellChanged1 = cells[col][row];
+            cellChanged2 = cells[col][row + 1];
+            cellChanged3 = cells[col][row + 2];
+            cellChanged4 = cells[col][row + 3];
+
+            cellChanged1.classList.add("player-win");
+            cellChanged2.classList.add("player-win");
+            cellChanged3.classList.add("player-win");
+            cellChanged4.classList.add("player-win");
+
+            break;
+        case "hor":
+            cellChanged1 = cells[col][row];
+            cellChanged2 = cells[col+1][row];
+            cellChanged3 = cells[col+2][row];
+            cellChanged4 = cells[col+3][row];
+
+            cellChanged1.classList.add("player-win");
+            cellChanged2.classList.add("player-win");
+            cellChanged3.classList.add("player-win");
+            cellChanged4.classList.add("player-win");
+
+            break;
+        case "diag1":
+            cellChanged1 = cells[col][row];
+            cellChanged2 = cells[col+1][row+1];
+            cellChanged3 = cells[col+2][row+2];
+            cellChanged4 = cells[col+3][row+3];
+
+            cellChanged1.classList.add("player-win");
+            cellChanged2.classList.add("player-win");
+            cellChanged3.classList.add("player-win");
+            cellChanged4.classList.add("player-win");
+
+            break;
+        case "diag2":
+            cellChanged1 = cells[col+3][row];
+            cellChanged2 = cells[col+2][row+1];
+            cellChanged3 = cells[col+1][row+2];
+            cellChanged4 = cells[col][row+3];
+
+            cellChanged1.classList.add("player-win");
+            cellChanged2.classList.add("player-win");
+            cellChanged3.classList.add("player-win");
+            cellChanged4.classList.add("player-win");
+
+            break;
+    }
+}
 
