@@ -60,13 +60,13 @@ function colClicked() {
     let winner = checkWinner();
 
     if (winner == 1) {
-        statusText.textContent = `Red Wins! :D`
+        statusText.textContent = `Red Wins!`
         changeIndicator(1);
         running = false;
         return;
     }
     else if (winner == -1) {
-        statusText.textContent = `Blue Wins! :D`
+        statusText.textContent = `Blue Wins!`
         changeIndicator(-1);
         running = false;
         return;

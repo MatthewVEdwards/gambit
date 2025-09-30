@@ -1,12 +1,13 @@
 body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: thistle;
 }
 
 
 .col{
     width: auto;
     height: 450px;
-
+    
     padding: 5px;
 
     display: grid;

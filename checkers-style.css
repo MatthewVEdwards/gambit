@@ -1,0 +1,27 @@
+
+
+
+
+#checkers-board{
+    width: 560px;
+    height: 560px;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.square{
+    width: 70px;
+    height: 70px;
+
+}
+
+.beige{
+    background-color: beige;
+}
+
+.brown{
+    background-color: brown;
+}
